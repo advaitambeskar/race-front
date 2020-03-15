@@ -38,9 +38,9 @@ Instead, it will copy all the configuration files and the transitive dependencie
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## NOTE
-An important distinction between this front-end and the RPS is the reactive ability and also overall implementation
-Password has been bcrypted and sent over the network. Since both Front-end, and backend communicate through axios, it is possible to send hashes over it without interception.
-The way authentication works between the front-end and the back-end is exactly how passport.js does it. I did not have passport.js when I was developing this (I was in flight and I did not have internet), so I just wrote the basic implementation for it. In no way is it meant to replace the original APi, nor am I suggesting that it is effectively same. It just has been coded to work in the same basic principle.
+An important distinction between this front-end and the RPS is the reactive ability and also overall implementation. Password has been bcrypted and sent over the network. Since both Front-end, and backend communicate through axios, it is possible to send hashes over it without interception.
+
+The way authentication works between the front-end and the back-end is exactly how passport.js does it. I did not have passport.js when I was developing this (I was in flight and I did not have internet), so I just wrote the basic implementation for it. In no way is it meant to replace the original APi, nor am I suggesting that it is effectively same. It just has been coded to work in the same basic principle. It obviously does not use cookies, I am using state variables.
 
 **The authentication password and username is both 'advait' (case-sensitive)**
 The React app communicates through two end-points (both endpoints are meant for different jobs.)
@@ -50,3 +50,7 @@ The React app communicates through two end-points (both endpoints are meant for 
 **As a user you will not have to access them, they are meant to be mapped on the backend**
 
 The entire application is run on **PORT 3000**
+## NOTE
+If I were to do two things differently, I would
+* Create a cookie. Currently I am storing the password hash in the state of my application. This is not a good practice because the hash is still vulnerable to attacks. One way of working around the issue is to not store password at all, but to maintain token systems that can be authenticated by the user. Passportjs does this in-built. I created a similar set up but without explicitly using cookies.
+* Currently I am reading a bunch of data from backend and then working with it. This is okay because current computers are processor-efficient, and the web-app was tiny. However, in production/ enterprise, a good practice is to actually work on the back-end and minimize the total data transfer and hosted by the front-end. This is due to the inherent reliability of the back-end services. However, for reasons previously mentioned, I used data-calls to the front-end and worked with the data there.
