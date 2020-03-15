@@ -54,3 +54,5 @@ The entire application is run on **PORT 3000**
 If I were to do two things differently, I would
 * Create a cookie. Currently I am storing the password hash in the state of my application. This is not a good practice because the hash is still vulnerable to attacks. One way of working around the issue is to not store password at all, but to maintain token systems that can be authenticated by the user. Passportjs does this in-built. I created a similar set up but without explicitly using cookies.
 * Currently I am reading a bunch of data from backend and then working with it. This is okay because current computers are processor-efficient, and the web-app was tiny. However, in production/ enterprise, a good practice is to actually work on the back-end and minimize the total data transfer and hosted by the front-end. This is due to the inherent reliability of the back-end services. However, for reasons previously mentioned, I used data-calls to the front-end and worked with the data there.
+
+## AUTHOR : ADVAIT AMBESKAR
